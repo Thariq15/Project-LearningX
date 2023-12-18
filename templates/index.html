@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Versi Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JQuery  -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- Bulma  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- FONT -->
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
+    <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+    <style>
+        /* search-login  */
+        .d-flex {
+            margin-left: 10px;
+            /* Spasi ke kiri */
+            margin-right: 10px;
+            /* Spasi ke kanan */
+            
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        main {
+            padding-top: 4rem;
+        }
+
+        /* Show it is fixed to the top */
+
+
+        /* Carousel  */
+        /* GLOBAL STYLES
+-------------------------------------------------- */
+        /* Padding below the footer and lighter body text */
+
+        body {
+            padding-bottom: 3rem;
+            color: rgb(var(--bs-tertiary-color-rgb));
+        }
+
+        /* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+        /* Carousel base class */
+        .carousel {
+            margin-bottom: 4rem;
+        }
+
+        /* Since positioning the image, we need to help out the caption */
+        .carousel-caption {
+            bottom: 3rem;
+            z-index: 10;
+        }
+
+        /* Declare heights because of positioning of img element */
+        .carousel-item {
+            height: 32rem;
+        }
+
+
+        /* MARKETING CONTENT
+-------------------------------------------------- */
+
+        /* Center align the text within the three columns below the carousel */
+        .marketing .col-lg-4 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* rtl:begin:ignore */
+        .marketing .col-lg-4 p {
+            margin-right: .75rem;
+            margin-left: .75rem;
+        }
+
+        /* rtl:end:ignore */
+
+
+        /* Featurettes
+------------------------- */
+
+        .featurette-divider {
+            margin: 5rem 0;
+            /* Space out the Bootstrap <hr> more */
+        }
+
+        /* Thin out the marketing headings */
+        /* rtl:begin:remove */
+        .featurette-heading {
+            letter-spacing: -.05rem;
+        }
+
+        /* rtl:end:remove */
+
+        /* RESPONSIVE CSS
+-------------------------------------------------- */
+
+        @media (min-width: 40em) {
+
+            /* Bump up size of carousel content */
+            .carousel-caption p {
+                margin-bottom: 1.25rem;
+                font-size: 1.25rem;
+                line-height: 1.4;
+            }
+
+            .featurette-heading {
+                font-size: 50px;
+            }
+        }
+
+        @media (min-width: 62em) {
+            .featurette-heading {
+                margin-top: 7rem;
+            }
+        }
+        #mitra{
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .fonts {
+            font-size: 16px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .location{
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        #img-features{
+            width: 500px;
+            height: 500px;
+        }
+        #img-mitra{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <!-- Script  -->
+
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header data-bs-theme="dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <image href="{{ url_for('static', filename='icon.png') }}" width="40" height="32" alt="" />
+                    </svg>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="{{ 'nav-link active' if active_page == 'home' else 'nav-link' }}"
+                                aria-current="page" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="{{ 'nav-link active' if active_page == 'artikel' else 'nav-link' }}"
+                                href="/artikel">Article</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="{{ 'nav-link active' if active_page == 'imt' else 'nav-link' }}"
+                                aria-disabled="true" href="/kalkulator">IMT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="{{ 'nav-link active' if active_page == 'about' else 'nav-link' }}"
+                                aria-disabled="true" href="/about">Tentang</a>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-success" type="button"
+                        onclick="location.href='/login'">Login</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Body -->
+    <main>
+        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                    aria-label="Slide 1" aria-current="true"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+                    class=""></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    class=""></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" role="img" aria-label="Bootstrap">
+                        <image href="{{ url_for('static', filename='hl1.jpeg') }}" />
+                        <!-- kelambu  -->
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Healthy Food.</h1>
+                            <p class="opacity-50 ">Konsumsi makanan sehat merupakan kunci utama untuk mendukung
+                                kesehatan dan keseimbangan nutrisi, memberikan energi yang optimal serta melindungi
+                                tubuh dari berbagai penyakit kronis.</p>
+                            <p><a class="btn btn-lg btn-primary" href="/register">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" role="img" aria-label="Bootstrap">
+                        <image href="{{ url_for('static', filename='hl2.png') }}" />
+                        <!-- kelambu  -->
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Regular Exercise.</h1>
+                            <p class="opacity-75 ">Olahraga secara teratur tidak hanya meningkatkan kebugaran fisik,
+                                tetapi juga memberikan manfaat positif bagi kesehatan mental, meningkatkan suasana hati,
+                                dan mengurangi risiko penyakit kronis.</p>
+                            <p><a class="btn btn-lg btn-primary" href="/register">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" role="img" aria-label="Bootstrap">
+                        <image href="{{ url_for('static', filename='hl3.jpg') }}" />
+                        <!-- kelambu  -->
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Exper Advice.</h1>
+                            <p class="opacity-75 ">Pentingnya mendengarkan saran ahli dalam hidup sehat adalah kunci
+                                untuk membuat keputusan informasional yang tepat, menciptakan pola hidup yang
+                                berkelanjutan, dan meraih kesejahteraan holistik.</p>
+                            <p><a class="btn btn-lg btn-primary" href="/register">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- Marketing messaging and featurettes
+        ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+            <div class="nav-scroller py-1 mb-3 border-bottom" >
+                    <h1 class="display-6 fst-italic text-center" id="mitra">Following are our partners</h1>
+            </div>
+            
+            <!-- Three columns of text below the carousel -->
+                <div class="row">
+                    {% for i in doctors %}
+                        <div class="col-lg-4">
+                            <div class="text-center">
+                                <img src="../static/{{i.img}}" width="100" class="rounded-circle" id="img-mitra">
+                            </div>
+                            <h2 class="lead fst-italic">{{i.name}}</h2>
+                            <p class="fonts">{{i.tag}}</p>
+                            <p><a class="btn btn-primary" href="/login">View details »</a></p>
+                        </div><!-- /.col-lg-4 -->
+                    {% endfor %}
+                </div><!-- /.row -->
+
+            <!-- START THE FEATURETTES -->
+            <h1 class="display-6 fst-italic text-center" id="mitra">The world's great inventor</h1>
+            <hr >
+            {% for i in inventors %}
+                {% if loop.index is divisibleby 2 %}
+                    <div class="row featurette">
+                        <div class="col-md-7 order-md-2">
+                            <h2 class="featurette-heading fw-normal lh-1">{{i.name}}<span
+                                    class="text-body-secondary">{{i.inventor}}</span></h2>
+                            <strong class="location">{{i.date}}</strong>
+                            <p class="lead">{{i.biografi}}</p>
+                        </div>
+                        <div class="col-md-5 order-md-1">
+                            <img src="../static/{{i.img}}" alt="" id="img-features"> 
+                        </div>
+                    </div>
+                    <hr class="featurette-divider">
+                {% else %}
+                    <div class="row featurette">
+                        <div class="col-md-7">
+                            <h2 class="featurette-heading fw-normal lh-1">{{i.name}}<span
+                                    class="text-body-secondary">{{i.inventor}}</span></h2>
+                            <strong class="location">{{i.date}}</strong>
+                            <p class="lead">{{i.biografi}}</p>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="../static/{{i.img}}" alt="" id="img-features">
+                        </div>
+                    </div>
+                    <hr class="featurette-divider">
+                {% endif %}
+                
+                
+            {% endfor %}
+            <!-- /END THE FEATURETTES -->
+        </div><!-- /.container -->
+    </main>
+
+    <!-- Footer -->
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <svg class="bi" width="30" height="24">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+                <span class="mb-3 mb-md-0 text-body-secondary">© 2023 MBKM & LearningX</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                            <path
+                                d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
+                        </svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                        </svg></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                        </svg></a></li>
+            </ul>
+        </footer>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
